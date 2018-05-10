@@ -1,26 +1,12 @@
 import pandas as pd
 import numpy as np
 import re
-import sklearn
-import xgboost as xgb
 import seaborn as sns
 import matplotlib.pyplot as plt
-
 import plotly.offline as py
-
 py.init_notebook_mode(connected=True)
-import plotly.graph_objs as go
-import plotly.tools as tls
-
 import warnings
-
 warnings.filterwarnings('ignore')
-
-# Going to use these 5 base models for the stacking
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier, \
-    ExtraTreesClassifier
-from sklearn.svm import SVC
-from sklearn.model_selection import KFold
 from sklearn.model_selection import StratifiedShuffleSplit
 from sklearn.metrics import accuracy_score, log_loss
 from sklearn.neighbors import KNeighborsClassifier
@@ -85,7 +71,6 @@ def get_title(name):
         return title_search.group(1)
     return ""
 
-
 for dataset in full_data:
     dataset['Title'] = dataset['Name'].apply(get_title)
 
@@ -141,8 +126,6 @@ print (train.head(10))
 # save as 2D list
 train = train.values
 test = test.values
-print(train)
-print(test)
 
 # Classifiers Comparision
 classifiers = [
